@@ -4,13 +4,14 @@ const todoButton = document.querySelector('#create')
 const todoList = document.querySelector('.todo-list')
 
 
-// event listening
+//event listening/ tlacitko add new task spusti funkciu addTodo
 todoButton.addEventListener('click', addTodo)
 
+//ukladam zoznam uloh
 let todos = []
 
 
-// funkcia na zachytenie udalosti a vstupu uzivatela, vytvorenie item a pushnutie to do "todos"
+//funkcia na zachytenie udalosti a vstupu uzivatela, vytvorenie item a pushnutie to do "todos"
 function addTodo (event) {
 
   const item = {
@@ -27,6 +28,7 @@ function addTodo (event) {
     return;
   } 
 
+  //ak uzivatel zada text a klikne add, tu mi zavola funkciu createTodoitem
   const todoItem = createTodoItem(item)
   todoList.prepend(todoItem)
 
