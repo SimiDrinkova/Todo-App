@@ -95,6 +95,12 @@ function createTodoItem(item) {
     Save();
   });
 
+//ak uzivatel editne text, urobi sa update v localstorage
+  input.addEventListener('input', () => {
+    item.text = input.value;
+    Save();
+  });
+
  //ak uzivatel klikne mimo upraveneho inputu, bude to znova disabled  
   input.addEventListener('blur', () => {
     input.setAttribute('disabled', '');
