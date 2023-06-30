@@ -137,4 +137,8 @@ main {
   color: red;
 }
 
+.item.complete .todo-text {
+  text-decoration: line-through;
+}
+
 

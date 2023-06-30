@@ -134,11 +134,23 @@ function DisplayTodo() {
   const savedTodos = localStorage.getItem("myTodos");
   if (savedTodos) {
     todos = JSON.parse(savedTodos);
-    for (let i = 0; i < todos.length; i++) {
-      const todoItem = createTodoItem(todos[i]);
-      todoList.appendChild(todoItem);
-    }
   }
+
+  const completedTodo = todos.filter((todo) => todo.complete);
+  const incompleteTodo = todos.filter((todo) => !todo.complete);
+
+  //nehotove ulohy sa zobrazia hore
+  incompleteTodo.forEach((todo) => {
+    const todoItem = createTodoItem(todo);
+    todoList.prepend(todoItem);
+  });
+
+  //hotove ulohy budu dole
+  completedTodo.forEach((todo) => {
+    const todoItem = createTodoItem(todo);
+    todoItem.classList.add("complete");
+    todoList.appendChild(todoItem);
+  });
 }
 
 function Save() {
