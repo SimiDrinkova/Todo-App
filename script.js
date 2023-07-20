@@ -2,6 +2,7 @@
 const todoInput = document.querySelector("#todo");
 const todoButton = document.querySelector("#create");
 const todoList = document.querySelector(".todo-list");
+const filterSelect = document.querySelector(".filter-todo");
 
 //event listening/ tlacitko add new task spusti funkciu addTodo
 todoButton.addEventListener("click", addTodo);
@@ -9,7 +10,29 @@ todoButton.addEventListener("click", addTodo);
 //ukladam zoznam uloh
 let todos = [];
 
-//funkcia na zachytenie udalosti a vstupu uzivatela, vytvorenie item a pushnutie to do "todos"
+// Funkcia pre filtrovanie úloh
+function filterTasks() {
+  const selectedFilter = filterSelect.value;
+  const allTodoItems = todoList.querySelectorAll(".item");
+
+  allTodoItems.forEach((todoItem) => {
+    const completed = todoItem.classList.contains("complete");
+    const uncompleted = !completed;
+
+    if (selectedFilter === "completed-task") {
+      todoItem.style.display = completed ? "flex" : "none";
+    } else if (selectedFilter === "uncompleted-task") {
+      todoItem.style.display = uncompleted ? "flex" : "none";
+    } else {
+      todoItem.style.display = "flex";
+    }
+  });
+}
+
+// Pridáme event listener pre zmenu vo <select> elemente
+filterSelect.addEventListener("change", filterTasks);
+
+// Funkcia na zachytenie udalosti a vstupu uzivatela, vytvorenie item a pushnutie to do "todos"
 function addTodo(event) {
   const item = {
     id: new Date().getTime(),
@@ -115,7 +138,6 @@ function createTodoItem(item) {
     if (item.complete) {
       checkbox.classList.add("complete");
       input.style.textDecoration = "line-through";
-      //vsetky hotove tasky sa posunu dole
       todoList.appendChild(todoItem);
     } else {
       checkbox.classList.remove("complete");
@@ -123,6 +145,7 @@ function createTodoItem(item) {
       todoList.prepend(todoItem);
     }
     Save();
+    filterTasks(); // Opäť zavoláme funkciu pre filtrovanie, aby sa úlohy správne zoradili
   });
 
   return todoItem;
@@ -136,16 +159,19 @@ function DisplayTodo() {
     todos = JSON.parse(savedTodos);
   }
 
+  // Odstránime všetky existujúce úlohy
+  todoList.innerHTML = "";
+
+  // Roztriedime úlohy podľa stavu hotovosti (complete)
   const completedTodo = todos.filter((todo) => todo.complete);
   const incompleteTodo = todos.filter((todo) => !todo.complete);
 
-  //nehotove ulohy sa zobrazia hore
+  // Zobrazíme najprv nehotové úlohy a potom hotové úlohy (ktoré sa takto dostanú na koniec zoznamu)
   incompleteTodo.forEach((todo) => {
     const todoItem = createTodoItem(todo);
     todoList.prepend(todoItem);
   });
 
-  //hotove ulohy budu dole
   completedTodo.forEach((todo) => {
     const todoItem = createTodoItem(todo);
     todoItem.classList.add("complete");
@@ -158,4 +184,5 @@ function Save() {
   localStorage.setItem("myTodos", saved);
 }
 
+// Zavoláme funkciu DisplayTodo() na začiatku pre zobrazenie úloh po obnovení stránky
 DisplayTodo();
