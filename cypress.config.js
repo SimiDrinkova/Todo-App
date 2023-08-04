@@ -2,7 +2,7 @@ const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
   e2e: {
-    baseUrl: "https://simidrinkova.github.io/Todo-App/",
+    baseUrl: "http://localhost:5500/",
     setupNodeEvents(on, config) {},
   },
 });

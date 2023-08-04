@@ -95,7 +95,7 @@ function createTodoItem(item) {
   todoItem.appendChild(actions);
 
   const edit = document.createElement("button");
-  edit.className = "material-icons";
+  edit.className = "material-icons edit btn";
   edit.innerText = "edit";
   actions.appendChild(edit);
 
