@@ -46,7 +46,7 @@ jobs:
         with:
           node-version: 18.14
       - name: Install Dependencies
-        run: npm ci
+        run: npm i
       - name: Start localhost
         run: npm run start-dev
       - name: Run tests
