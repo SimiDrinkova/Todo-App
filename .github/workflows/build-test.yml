@@ -48,6 +48,6 @@ jobs:
       - name: Install Dependencies
         run: npm ci
       - name: Start localhost
-        run: npm start-dev
+        run: npm run start-dev
       - name: Run tests
         run: npm test
