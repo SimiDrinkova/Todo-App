@@ -48,4 +48,5 @@ jobs:
       - name: Install Dependencies
         run: npm i
       - name: Run tests
-        run: npx cypress run
+        shell: /bin/sh
+        run: cypress run
