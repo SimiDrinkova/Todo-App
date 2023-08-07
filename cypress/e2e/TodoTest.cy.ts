@@ -1,4 +1,3 @@
-import { add, first } from "cypress/types/lodash";
 import { todo, todoList, filter } from "../support/selectors";
 
 beforeEach('open the website', ()=>{
