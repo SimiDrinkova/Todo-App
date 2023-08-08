@@ -48,4 +48,4 @@ jobs:
       - name: Install Dependencies
         run: npm ci
       - name: Run tests
-        run: cy:run
+        run: npx cypress run
