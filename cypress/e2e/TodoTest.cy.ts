@@ -4,6 +4,7 @@ beforeEach('open the website', ()=>{
   cy.visit("/")
 })
 
+
 it('Elements should be visible WHEN todolist is empty', ()=>{
     cy.assertElementExist(todo.title)
     cy.assertElementExist(todo.input)
