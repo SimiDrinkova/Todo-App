@@ -27,7 +27,7 @@ jobs:
         run: npm ci
 
       - name: Run localhost
-        run: npm start:dev
+        run: npm run start:dev
 
       - name: Cypress.io
         run: cypress-io/github-action@v5
