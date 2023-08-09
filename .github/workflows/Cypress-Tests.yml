@@ -27,11 +27,9 @@ jobs:
         run: npm ci
 
       - name: Run localhost
-        run: npm start:dev  
-           wait-on: "http://localhost:5500"
+        run: npm start:dev
+        with:
+          wait-on: "http://localhost:5500"
 
       - name: Cypress.io
         run: cypress-io/github-action@v5
-
-
-
