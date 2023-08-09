@@ -6,8 +6,8 @@
   "scripts": {
     "cy:open": "npx cypress open",
     "cy:run": "npx cypress run",
-    "start-dev": "start http://localhost:5500",
-    "start-prod": "start https://simidrinkova.github.io/Todo-App/"
+    "start:dev": "start http://localhost:5500",
+    "start:prod": "start https://simidrinkova.github.io/Todo-App/"
   },
   "repository": {
     "type": "git",
