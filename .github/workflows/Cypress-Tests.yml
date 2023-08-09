@@ -26,8 +26,5 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
-      - name: Run localhost
-        run: npm run start:dev
-
       - name: Cypress.io
         run: cypress-io/github-action@v5
