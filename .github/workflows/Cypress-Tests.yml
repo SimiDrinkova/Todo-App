@@ -12,6 +12,15 @@ on:
   workflow_dispatch:
 
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Deploy Develop to Netlify
+        if: ${{ github.ref =='refs/heads/develop'}}
+        run: curl -X POST -d {} ${{ secrets.NETLIFY_BUILD_DEVELOP }}
+
   cypress-run:
     runs-on: ubuntu-latest
     steps:
