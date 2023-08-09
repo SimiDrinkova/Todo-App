@@ -30,3 +30,4 @@ jobs:
         run: cypress-io/github-action@v5
         with:
           start: npm start:dev
+          wait-on: "http://localhost:5500"
