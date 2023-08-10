@@ -1,5 +1,8 @@
 import { todo, todoList, filter } from "../support/selectors";
 
+const newTaskToAdd = "Play Games"
+const secondTaskToAdd = "Listen Music"
+
 beforeEach('open the website', ()=>{
   cy.visit("/")
 })
@@ -13,20 +16,62 @@ it('Elements should be visible WHEN todolist is empty', ()=>{
   })
 
 it('User adds a new task', ()=>{
-  const task = "New Task"
-  cy.addTask(todo.addTaskButton, task)
+  cy.addTask(todo.addTaskButton, newTaskToAdd)
   cy.assertElementExist(todoList.todoItem)
-  cy.assertElementHaveValue(todoList.todoText, task)
+  cy.assertElementHaveValue(todoList.todoText, newTaskToAdd)
 })  
 
-it('User edits an existing task', ()=>{
-  const firstTask = "Buy cheese"
-  const newTask = "Buy Milk"
-  
-  cy.addTask(todo.addTaskButton, firstTask)
-  cy.assertElementHaveValue(todoList.todoText, firstTask)
-  cy.editTask(todoList.editTodoInput, newTask)
-  cy.assertElementHaveValue(todoList.todoText, newTask)
+it('User edits an existing task', ()=>{  
+  cy.addTask(todo.addTaskButton, newTaskToAdd)
+  cy.assertElementHaveValue(todoList.todoText, newTaskToAdd)
+  cy.editTask(todoList.editTodoInput, secondTaskToAdd)
+  cy.assertElementHaveValue(todoList.todoText, secondTaskToAdd)
   cy.assertElementHaveLenght(todoList.todoItem, 1)
 })
 
+it('User marks a task as completed', ()=>{
+  cy.addTask(todo.addTaskButton, newTaskToAdd)
+  cy.addTask(todo.addTaskButton, secondTaskToAdd)
+  cy.clickCheckboxAtIndex(todoList.checkbox, 0)
+  cy.assertElementAtIndexHaveClass(todoList.checkbox, 1, 'complete')
+  cy.assertElementAtIndexHaveValue(todoList.todoText, 1, secondTaskToAdd)
+})
+
+it('User filters tasks by completed', ()=>{
+  cy.addTask(todo.addTaskButton, newTaskToAdd)
+  cy.addTask(todo.addTaskButton, secondTaskToAdd)
+  cy.clickCheckboxAtIndex(todoList.checkbox, 0)
+  cy.showCompletedTasks()
+  //TODO assert todo items completed after fix
+})
+
+it('User filters tasks by uncompleted', ()=>{
+  cy.addTask(todo.addTaskButton, newTaskToAdd)
+  cy.addTask(todo.addTaskButton, secondTaskToAdd)
+  cy.clickCheckboxAtIndex(todoList.checkbox, 0)
+  cy.showUnCompletedTasks()
+  //TODO assert todo items uncompleted after fix
+})
+
+it('User filters tasks by all', ()=>{
+  cy.addTask(todo.addTaskButton, newTaskToAdd)
+  cy.addTask(todo.addTaskButton, secondTaskToAdd)
+  cy.clickCheckboxAtIndex(todoList.checkbox, 0)
+  cy.showAllTasks()
+  //TODO assert todo items all after fix
+})
+
+it('User deletes a task', ()=>{
+  cy.addTask(todo.addTaskButton, newTaskToAdd)
+  cy.addTask(todo.addTaskButton, secondTaskToAdd)
+  cy.deleteTask(todoList.deleteTodoBtn, 0)
+  cy.assertElementHaveLenght(todoList.todoItem, 1)
+})
+
+it('User tries to add a task with an empty input', ()=>{
+  cy.getElement(todo.addTaskButton).click()
+  cy.on('window:alert', (str) => {
+    expect(str).to.equal(`Please enter task`)
+  })
+  cy.assertElementDoesntExist(todoList.todoItem)
+})
