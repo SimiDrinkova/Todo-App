@@ -7,7 +7,7 @@
     "build": "npm run build",
     "cy:open": "npx cypress open",
     "cy:run": "npx cypress run",
-    "start:dev": "start http://localhost:5500",
+    "start": "live-server",
     "start:prod": "start https://simidrinkova.github.io/Todo-App/"
   },
   "repository": {
@@ -23,5 +23,8 @@
   "dependencies": {
     "cypress": "^12.17.3",
     "typescript": "^5.1.6"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2"
   }
 }
