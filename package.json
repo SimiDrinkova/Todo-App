@@ -4,8 +4,7 @@
   "description": "",
   "main": "script.js",
   "scripts": {
-    "netlify": "npm install-g netlify-cli",
-    "deploy": "npm run deploy",
+    "build": "npm run build",
     "cy:open": "npx cypress open",
     "cy:run": "npx cypress run",
     "start:dev": "start http://localhost:5500",
