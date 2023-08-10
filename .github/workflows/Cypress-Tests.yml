@@ -14,6 +14,10 @@ on:
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
+
+    env:
+      LOCALHOST_URL: "http://127.0.0.1:8080/"
+
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout
@@ -27,5 +31,9 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
+      - name: Spustenie lokálneho servera
+        run: npx live-server --port=8080 &
+
       - name: Cypress.io
-        run: npx cypress run
+        run: |
+          npx cypress run --config baseUrl=$LOCALHOST_URL
