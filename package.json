@@ -4,6 +4,7 @@
   "description": "",
   "main": "script.js",
   "scripts": {
+    "deploy": "npm run deploy",
     "cy:open": "npx cypress open",
     "cy:run": "npx cypress run",
     "start:dev": "start http://localhost:5500",
