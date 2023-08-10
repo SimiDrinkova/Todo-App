@@ -20,7 +20,7 @@ jobs:
         with:
           node-version: 18.14
       - name: Install Netlify CLI
-        run: npm install-g netlify-cli
+        run: npm install -g netlify-cli
       - name: Install dependencies
         run: npm install
       - name: Deploy
