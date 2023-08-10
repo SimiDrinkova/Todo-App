@@ -4,10 +4,10 @@
   "description": "",
   "main": "script.js",
   "scripts": {
-    "test:open": "npx cypress open",
-    "test": "npx cypress run",
-    "start-dev": "start http://localhost:5500",
-    "start-prod": "start https://simidrinkova.github.io/Todo-App/"
+    "cy:open": "npx cypress open",
+    "cy:run": "npx cypress run",
+    "start:dev": "start http://localhost:5500",
+    "start:prod": "start https://simidrinkova.github.io/Todo-App/"
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/SimiDrinkova/Todo-App#readme",
   "dependencies": {
-    "cypress": "^12.17.0"
+    "cypress": "^12.17.3",
+    "typescript": "^5.1.6"
   }
 }

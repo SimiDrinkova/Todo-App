@@ -1,0 +1,53 @@
+Feature: Task App 2023 Functionality
+
+Scenario: User adds a new task
+Given the user is on the Task App page
+When the user enters "Buy groceries" into the "Your task" input field
+And the user clicks the "Add new task" button
+Then the "Buy groceries" task should be displayed in the task list
+
+Scenario: User edits an existing task
+Given the user is on the Task App page
+And there is an existing task with the text "Study for exam" in the task list
+When the user clicks the "edit" button next to the task "Study for exam"
+And the user changes the text to "Prepare presentation"
+And the user clicks outside the input field
+Then the task with the text "Prepare presentation" should be displayed in the task list
+And the task with the text "Study for exam" should not be present in the task list
+
+Scenario: User marks a task as completed
+Given the user is on the Task App page
+And there is an existing task with the text "Call mom" in the task list
+When the user clicks the checkbox next to the task "Call mom"
+Then the task "Call mom" should be marked as completed
+And the completed task "Call mom" should be moved to the bottom of the task list
+
+Scenario: User filters tasks by completed
+Given the user is on the Task App page
+And there are multiple tasks in the task list, some completed and some uncompleted
+When the user selects "Completed" from the "Filter tasks" dropdown
+Then only the completed tasks should be displayed in the task list
+
+Scenario: User filters tasks by uncompleted
+Given the user is on the Task App page
+And there are multiple tasks in the task list, some completed and some uncompleted
+When the user selects "Uncompleted" from the "Filter tasks" dropdown
+Then only the uncompleted tasks should be displayed in the task list
+
+Scenario: User filters tasks by all
+Given the user is on the Task App page
+And there are multiple tasks in the task list, some completed and some uncompleted
+When the user selects "All" from the "Filter tasks" dropdown
+Then all tasks, both completed and uncompleted, should be displayed in the task list
+
+Scenario: User deletes a task
+Given the user is on the Task App page
+And there is an existing task with the text "Finish project" in the task list
+When the user clicks the "delete" button next to the task "Finish project"
+Then the task with the text "Finish project" should be removed from the task list
+
+Scenario: User tries to add a task with an empty input
+Given the user is on the Task App page
+When the user clicks the "Add new task" button without entering any text in the "Your task" input field
+Then an alert should be displayed with the message "Please enter task"
+And the task list should remain unchanged
