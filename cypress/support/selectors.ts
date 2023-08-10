@@ -8,7 +8,8 @@ export const todoList = {
     todoItem: ".item",
     todoText: ".todo-text",
     deleteTodoBtn: '.remove',
-    editTodoInput :'.edit'
+    editTodoInput :'.edit',
+    checkbox: '.todo-item-checkbox'
 }
 
 export const filter = {
