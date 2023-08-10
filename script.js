@@ -69,6 +69,7 @@ function createTodoItem(item) {
 
   const checkbox = document.createElement("input");
   checkbox.type = "checkbox";
+  checkbox.className = "todo-item-checkbox";
   checkbox.checked = item.complete;
   todoItem.appendChild(checkbox);
 
