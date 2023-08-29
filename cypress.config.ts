@@ -6,6 +6,13 @@ module.exports = defineConfig({
     viewportWidth: 1920,
     viewportHeight: 1080,
     video: false,
-    setupNodeEvents(on, config) {},
+    setupNodeEvents(on, config) {
+      require('@bahmutov/cy-grep/src/plugin')(config);
+      return config;
+    },
   },
+  "env": {
+    "grepOmitFiltered": true,
+    "grepFilterSpecs": true
+  }
 });
