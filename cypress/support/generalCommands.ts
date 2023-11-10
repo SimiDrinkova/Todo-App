@@ -14,7 +14,7 @@ declare namespace Cypress{
        showUnCompletedTasks(): Chainable<void>
        showAllTasks(): Chainable<void>
        deleteTask(selector: string, index:number): Chainable<void>
-       assertElementDoesntExist(selector:string):Chainable<void>
+       assertElementDoesntExist(selector:string, optionalValue?: string): Chainable<void>
     }}
 
 
@@ -78,6 +78,6 @@ Cypress.Commands.add('deleteTask', (selector, index)=>{
     cy.getElement(selector).eq(index).click()
 })
 
-Cypress.Commands.add('assertElementDoesntExist', (selector) =>{
-    cy.getElement(selector).should('not.exist')
+Cypress.Commands.add('assertElementDoesntExist', (selector, value) =>{
+    cy.getElement(selector).should('not.exist', `${value}`)
 })

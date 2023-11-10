@@ -33,7 +33,7 @@ it('User marks a task as completed', ()=>{
   cy.addTask(todo.addTaskButton, newTaskToAdd)
   cy.addTask(todo.addTaskButton, secondTaskToAdd)
   cy.clickCheckboxAtIndex(todoList.checkbox, 0)
-  cy.assertElementAtIndexHaveClass(todoList.checkbox, 1, 'complete')
+  cy.assertElementAtIndexHaveClass(todoList.todoItem, 1, 'complete')
   cy.assertElementAtIndexHaveValue(todoList.todoText, 1, secondTaskToAdd)
 })
 
@@ -42,7 +42,7 @@ it('User filters tasks by completed', {tags: '@filter'}, ()=>{
   cy.addTask(todo.addTaskButton, secondTaskToAdd)
   cy.clickCheckboxAtIndex(todoList.checkbox, 0)
   cy.showCompletedTasks()
-  //TODO assert todo items completed after fix
+  cy.assertElementHaveClass(todoList.todoItem, "complete")
 })
 
 it('User filters tasks by uncompleted', {tags: '@filter'}, ()=>{
@@ -50,7 +50,8 @@ it('User filters tasks by uncompleted', {tags: '@filter'}, ()=>{
   cy.addTask(todo.addTaskButton, secondTaskToAdd)
   cy.clickCheckboxAtIndex(todoList.checkbox, 0)
   cy.showUnCompletedTasks()
-  //TODO assert todo items uncompleted after fix
+  cy.assertElementHaveValue(todoList.todoText, newTaskToAdd)
+  //TODO, upravit kod pre lepsie overenie testu
 })
 
 it('User filters tasks by all', {tags: '@filter'}, ()=>{
@@ -58,7 +59,8 @@ it('User filters tasks by all', {tags: '@filter'}, ()=>{
   cy.addTask(todo.addTaskButton, secondTaskToAdd)
   cy.clickCheckboxAtIndex(todoList.checkbox, 0)
   cy.showAllTasks()
-  //TODO assert todo items all after fix
+  cy.assertElementHaveLenght(todoList.todoItem, 2)
+    //TODO, upravit kod pre lepsie overenie testu
 })
 
 it('User deletes a task', ()=>{
