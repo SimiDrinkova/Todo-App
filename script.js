@@ -147,6 +147,7 @@ function createTodoItem(item) {
     }
     Save();
     filterTasks(); // Opäť zavoláme funkciu pre filtrovanie, aby sa úlohy správne zoradili
+    DisplayTodo();
   });
 
   return todoItem;
