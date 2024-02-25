@@ -1,5 +1,20 @@
 Feature: Task App 2023 Functionality
 
+Scenario: User logs in successfully
+Given the user is on the login page
+When the user enters "user@example.com" into the "username" input field
+And the user enters "password123" into the "Password" input field
+And the user clicks the "Login" button
+Then the user should be redirected to the dashboard page
+
+Scenario: User tries to log in with invalid credentials
+Given the user is on the login page
+When the user enters "invalid@example.com" into the "username" input field
+And the user enters "wrongpassword" into the "Password" input field
+And the user clicks the "Login" button
+Then an error message should be displayed with the message "Invalid email or password"
+And the user should remain on the login page
+
 Scenario: User adds a new task
 Given the user is on the Task App page
 When the user enters "Buy groceries" into the "Your task" input field

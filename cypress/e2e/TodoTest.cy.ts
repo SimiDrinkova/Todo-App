@@ -1,12 +1,27 @@
-import { todo, todoList, filter } from "../support/selectors";
+import { todo, todoList, filter, loginPage } from "../support/selectors";
 
 const newTaskToAdd = "Play Games"
 const secondTaskToAdd = "Listen Music"
+const username = "admin"
+const password = "password"
 
-beforeEach('open the website', ()=>{
-  cy.visit("/")
+beforeEach('open the website and log in', ()=>{
+  cy.login(username, password)
 })
 
+it('Login with valid credentials', ()=>{
+  cy.login(username, password)
+  cy.url().should("include", "/todo");
+})
+
+it('Login with invalid credentials', ()=>{
+  const wrongUsername = 'test'
+  const wrongUserPass = 'test'
+
+  cy.login(wrongUsername, wrongUserPass)
+  cy.assertElementExist(loginPage.errorMessage)
+  cy.url().should('not.include', '/todo')
+})
 
 it('Elements should be visible WHEN todolist is empty', ()=>{
     cy.assertElementExist(todo.title)

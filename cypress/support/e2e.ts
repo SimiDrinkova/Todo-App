@@ -16,6 +16,7 @@
 // Import commands.js using ES2015 syntax:
 import "./commands";
 import "./generalCommands";
+import "./login.commands";
 const registerCypressGrep = require('@bahmutov/cy-grep')
 registerCypressGrep()
 

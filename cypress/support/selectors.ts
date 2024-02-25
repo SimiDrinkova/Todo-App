@@ -18,3 +18,10 @@ export const filter = {
     uncompletedTask: ".show-uncompleted",
     allTask: ".show-all"
 }
+
+export const loginPage  = {
+    username: "#username",
+    password: "#password",
+    submit: "#submit",
+    errorMessage: "#errorMessage"
+}
