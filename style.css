@@ -153,4 +153,42 @@ select {
   overflow: hidden;
 }
 
+/* Login Page Form */
+#username, #password {
+  margin: 7px;
+  background-color: transparent;
+  text-transform: uppercase;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid white;
+}
+
+#submit {
+  border: none;
+  background-color: transparent;
+  margin: 7px;
+  color: white;
+  border: 2px solid chocolate;
+  border-radius: 50px;
+  background-color: chocolate;
+  padding: 5px;
+  text-transform: uppercase;
+  opacity: 0.7;
+  margin-top: 20px;
+  margin-bottom: 20PX;
+}
+
+h2{
+  margin-bottom: 7px;
+  text-transform: uppercase;
+}
+
+#loginForm {
+  text-transform: uppercase;
+}
+
+#errorMessage {
+
+
+}
 
