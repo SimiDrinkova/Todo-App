@@ -8,7 +8,11 @@ This repository hosts a test Todo application that is actively being developed. 
 
 To run the application, simply use the following command: npm run start:prod
 
-For successful login use these credentials: (username:admin" && password:password)
+For successful login use these credentials: 
+
+**username**:admin
+
+**password**:password
 
 **Testing**
 
